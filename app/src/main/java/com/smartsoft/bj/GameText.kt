@@ -59,7 +59,7 @@ fun HandsVu(game: Game) {
     val colors = +MaterialTheme.colors()
     Surface(color = Color.Transparent) {
         Row(
-            modifier = ExpandedWidth.wraps(MaxHeight(230.dp)).wraps(MinHeight(230.dp)),
+            modifier = ExpandedWidth.wraps(MaxHeight(270.dp)).wraps(MinHeight(270.dp)),
             arrangement = Arrangement.Center
         ) {
             Column(
