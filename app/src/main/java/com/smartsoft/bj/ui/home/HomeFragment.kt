@@ -14,10 +14,12 @@ import androidx.ui.foundation.DrawImage
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Image
 import androidx.ui.layout.*
+import androidx.ui.material.Button
 import androidx.ui.material.MaterialTheme
 import androidx.ui.res.imageResource
 import androidx.ui.tooling.preview.Preview
 import com.smartsoft.bj.R
+import java.util.*
 
 class HomeFragment : Fragment() {
 
@@ -38,14 +40,32 @@ class HomeFragment : Fragment() {
 @Composable
 fun Home() {
     val image: Image = +imageResource(R.drawable.blackjack)
-    Container(
-        modifier = MinHeight(360.dp) wraps ExpandedWidth wraps Spacing(30.dp),
-        padding = EdgeInsets(10.dp)
-    ) {
-        Clip(shape = RoundedCornerShape(4.dp)) {
-            DrawImage(image)
+    Column() {
+        Container(
+            modifier = MinHeight(360.dp) wraps ExpandedWidth wraps Spacing(30.dp)
+        ) {
+            Clip(shape = RoundedCornerShape(4.dp)) {
+                DrawImage(image)
+            }
+        }
+        Row(arrangement = Arrangement.Center, modifier = ExpandedWidth wraps Flexible(1f)) {
+            Column(arrangement = Arrangement.Center, modifier = ExpandedHeight) {
+
+                Button(
+                    text = "Play Game - UI 1".toUpperCase(Locale.getDefault()),
+                    modifier = Spacing(10.dp)
+                )
+                Button(
+                    text = "Play Game - UI 2".toUpperCase(Locale.getDefault()),
+                    modifier = Spacing(10.dp)
+                )
+            }
+        }
+        Column(modifier = Spacing(30.dp)){
+
         }
     }
+
 }
 
 
