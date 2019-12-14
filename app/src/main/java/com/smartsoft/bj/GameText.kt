@@ -16,10 +16,7 @@ import androidx.ui.text.font.FontStyle
 import androidx.ui.text.font.FontWeight
 import androidx.ui.tooling.preview.Preview
 
-enum class BjAction {
-    Deal, Hit, Stay
-}
-
+val bg = Color(0xFF,0xFA,0xFA)
 @Composable
 fun GameText() {
 
@@ -36,14 +33,16 @@ fun GameText() {
         setGame(g2)
     }
 
-    GameTextVu(game, ::dispatch)
+    MaterialTheme {
+        GameTextVu(game, ::dispatch)
+    }
 }
 
 
 @Composable
 fun GameTextVu(game: Game, dispatch: BjDispatch) {
-    val c1 = (+MaterialTheme.colors()).background
-    Surface(color = c1) {
+    val c1 = (+MaterialTheme.colors()).surface
+    Surface(color = Color.Transparent) {
         Column(
             modifier = Expanded,
             arrangement = Arrangement.Begin
@@ -58,7 +57,7 @@ fun GameTextVu(game: Game, dispatch: BjDispatch) {
 @Composable
 fun HandsVu(game: Game) {
     val colors = +MaterialTheme.colors()
-    Surface(color = colors.background) {
+    Surface(color = Color.Transparent) {
         Row(
             modifier = ExpandedWidth.wraps(MaxHeight(230.dp)).wraps(MinHeight(230.dp)),
             arrangement = Arrangement.Center
@@ -126,7 +125,7 @@ fun GameButtonsVu(game: Game, dispatch: BjDispatch) {
     val h: VF? = if (game.isGameOver) null else hit
     val s: VF? = if (game.isGameOver) null else stay
 
-    Surface(color = colors.background) {
+    Surface(color = Color.Transparent) {
         Row(
             arrangement = Arrangement.Center,
             modifier = ExpandedWidth.wraps(Spacing(top = 20.dp, bottom = 20.dp))
@@ -147,7 +146,7 @@ fun GameMsgVu(msg: String) {
         fontStyle = FontStyle.Italic,
         fontWeight = FontWeight.Bold
     )
-    Surface(color = colors.background) {
+    Surface(color = Color.Transparent) {
         Row(
             arrangement = Arrangement.Center,
             modifier = ExpandedWidth.wraps(Spacing(top = 20.dp, bottom = 20.dp))
