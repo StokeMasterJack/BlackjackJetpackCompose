@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.compose.Composable
 import androidx.compose.unaryPlus
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.ui.core.Clip
 import androidx.ui.core.dp
 import androidx.ui.core.setContent
@@ -20,6 +21,12 @@ import androidx.ui.res.imageResource
 import androidx.ui.tooling.preview.Preview
 import com.smartsoft.bj.R
 import java.util.*
+
+enum class HomeAction {
+    Bj1, Bj2
+}
+
+typealias HomeDispatch = (action: HomeAction) -> Unit
 
 class HomeFragment : Fragment() {
 
@@ -38,7 +45,24 @@ class HomeFragment : Fragment() {
 }
 
 @Composable
-fun Home() {
+fun Fragment.Home() {
+
+    fun dispatch(action: HomeAction) {
+        when (action) {
+            HomeAction.Bj1 -> findNavController().navigate(R.id.navigation_bj1)
+            HomeAction.Bj2 -> findNavController().navigate(R.id.navigation_bj2)
+        }
+    }
+
+    HomeVu(::dispatch)
+
+}
+
+
+@Composable
+fun HomeVu(dispatch: HomeDispatch) {
+
+
     val image: Image = +imageResource(R.drawable.blackjack)
     Column() {
         Container(
@@ -53,15 +77,21 @@ fun Home() {
 
                 Button(
                     text = "Play Game - UI 1".toUpperCase(Locale.getDefault()),
-                    modifier = Spacing(10.dp)
+                    modifier = Spacing(10.dp),
+                    onClick = {
+                        dispatch(HomeAction.Bj1)
+                    }
                 )
                 Button(
                     text = "Play Game - UI 2".toUpperCase(Locale.getDefault()),
-                    modifier = Spacing(10.dp)
+                    modifier = Spacing(10.dp),
+                    onClick = {
+                        dispatch(HomeAction.Bj1)
+                    }
                 )
             }
         }
-        Column(modifier = Spacing(30.dp)){
+        Column(modifier = Spacing(30.dp)) {
 
         }
     }
@@ -73,6 +103,6 @@ fun Home() {
 @Composable
 fun GameTextPreview() {
     MaterialTheme {
-        Home()
+        HomeVu {}
     }
 }
