@@ -1,0 +1,98 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+//    buildToolsVersion '29.0.3'  //dave
+
+//    defaultConfig {
+//        applicationId 'com.smartsoft.bj'
+//        minSdkVersion 26
+//        targetSdkVersion 29
+//        versionCode 1
+//        versionName "1.0"
+//        vectorDrawables.useSupportLibrary = true
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//    }
+
+    defaultConfig {
+        applicationId 'com.smartsoft.bj'
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            multiDexEnabled false
+//            debuggable false
+//            jniDebuggable false
+//            renderscriptDebuggable false
+//        }
+//        debug {
+//            multiDexEnabled false
+//            renderscriptDebuggable false
+//            jniDebuggable false
+//            debuggable true
+//        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        apiVersion = '1.3'
+        languageVersion = '1.3'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerVersion "1.3.70-dev-withExperimentalGoogleExtensions-20200424"
+        kotlinCompilerExtensionVersion "$compose_compiler_extension_version"
+    }
+    // dependenciesInfo {
+    //     includeInApk true         //dave
+    //     includeInBundle true      //dave
+    // }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.2.0'  //daves
+    implementation 'androidx.appcompat:appcompat:1.2.0-beta01'
+
+    implementation "androidx.ui:ui-framework:$compose_version"
+    implementation "androidx.ui:ui-layout:$compose_version"
+    implementation "androidx.ui:ui-material:$compose_version"
+    implementation "androidx.ui:ui-tooling:$compose_version"
+    implementation "androidx.ui:ui-foundation:$compose_version"   //dave
+
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'     //dave
+    implementation 'com.google.android.material:material:1.1.0'        //dave
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'  //dave
+
+
+//    implementation 'androidx.navigation:navigation-fragment:2.1.0'     //dave
+//    implementation 'androidx.navigation:navigation-ui:2.1.0'           //dave
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1' //dave
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'       //dave
+
+
+}
