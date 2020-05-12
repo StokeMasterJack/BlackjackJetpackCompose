@@ -75,8 +75,6 @@ fun GameMsgVu(msg: String) {
 @Composable
 fun ButtonsVu(game: Game, dispatch: BjDispatch) {
 
-    val (c, t) = Theme
-
     val deal = { dispatch(BjAction.Deal) }
     val hit = { dispatch(BjAction.Hit) }
     val stay = { dispatch(BjAction.Stay) }
@@ -89,10 +87,6 @@ fun ButtonsVu(game: Game, dispatch: BjDispatch) {
     val hEnabled: Boolean = !game.isGameOver
     val sEnabled: Boolean = !game.isGameOver
 
-//    val surfaceColor = Color.Green
-//    val surfaceColor = Color.Transparent
-    val surfaceColor = c.surface
-//    Surface(color = surfaceColor) {
     Row(
         verticalGravity = Alignment.Top,
         horizontalArrangement = Arrangement.Center,
@@ -116,7 +110,6 @@ fun ButtonsVu(game: Game, dispatch: BjDispatch) {
             onClick = s,
             enabled = sEnabled
         )
-//        }
     }
 }
 
